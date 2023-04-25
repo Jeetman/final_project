@@ -32,7 +32,7 @@
             <div>
                 <h1>Genres:</h2>
                 <ul>
-                    {% for item in genres %}
+                    {% for item in genres[{{ loop.index0 }}] %}
                         <li>{{ item }}</li>
                     {% endfor %}
                 </ul>
