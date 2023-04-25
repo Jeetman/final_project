@@ -15,7 +15,7 @@ def index():
      #                 .join(User, Post.author_id == User.id) \
       #                .order_by(Post.created.desc()) \
        #               .all()
-    posts = None
+    posts = []
     return render_template('blog/index.html', posts=posts)
 #@bp.route('/create', methods=('GET', 'POST'))
 #@login_required
