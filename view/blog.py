@@ -11,11 +11,8 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-    posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \
-                      .join(User, Post.author_id == User.id) \
-                      .order_by(Post.created.desc()) \
-                      .all()
-    return render_template('blog/index.html', posts=posts)
+    books = Book.query.all()
+    return render_template('blog/index.html', books=books)
 @bp.route('/search')
 def search():
     isbn = request.args.get('query')
