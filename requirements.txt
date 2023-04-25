@@ -5,3 +5,5 @@ flask_wtf
 psycopg2
 python-dotenv
 SQLAlchemy
+jinja2==3.0.3
+werkzeug==2.0.3
