@@ -44,13 +44,13 @@ def upload_books():
     with open('books.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            book_title = row[0]
-            isbn = row[1]
-            author = row[2]
-            genre = row[4]
-            genre2 = row[5]
-            genre3 = row[6]
-            genre4 = row[7]
+            book_title = row['Book Title']
+            isbn = row['ISBN']
+            author = row['Author']
+            genre = row['Genre 1']
+            genre2 = row['Genre 2']
+            genre3 = row['Genre 3']
+            genre4 = row['Genre 4']
             genreAll = genre + "," + genre2 + "," + genre3 + "," + genre4
             ## create a new Post object
             new_book = Book(isbn=isbn,title=book_title, author=author, genre=genreAll, available="False")

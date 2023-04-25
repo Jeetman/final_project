@@ -31,6 +31,11 @@ def search():
         return render_template('blog/view.html', book=book, user=user)
     
     flash(error)
+    posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \
+                      .join(User, Post.author_id == User.id) \
+                      .order_by(Post.created.desc()) \
+                      .all()
+    return render_template('blog/index.html', posts=posts)
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
