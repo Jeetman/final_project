@@ -27,7 +27,7 @@ def upgrade():
     op.create_table('post',
         sa.Column('id', sa.Integer(), nullable=False),
         sa.Column('author_id', sa.Integer(), nullable=False),
-        sa.Column('created', sa.TIMESTAMP(), nullable=False, server_default=sa.func.current_timestamp()),
+        sa.Column('created', sa.TIMESTAMP(), server_default=sa.func.current_timestamp()),
         sa.Column('title', sa.String(), nullable=False),
         sa.Column('body', sa.String(), nullable=False),
         sa.ForeignKeyConstraint(['author_id'], ['user.id'], ),

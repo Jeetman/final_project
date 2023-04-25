@@ -1,5 +1,6 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, TIMESTAMP
 from sqlalchemy.orm import validates, relationship
+from sqlalchemy.sql.expression import func
 
 from app import db
 
@@ -45,7 +46,7 @@ class Post(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     author_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    created = Column(TIMESTAMP, nullable=True)
+    created = Column(TIMESTAMP, default=func.now())
     title = Column(String, nullable=False)
     body = Column(String, nullable=False)
     
