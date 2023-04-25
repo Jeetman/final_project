@@ -55,7 +55,7 @@ def create():
 
             book.available = "True"
             
-            user = User.query.where(User.id == g.user['id']).first()
+            user = User.query.where(User.id == g.user.id).first()
             book.uploader = user.username
 
             ## commit the changes to the database
