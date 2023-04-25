@@ -1,5 +1,5 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, String
-from sqlalchemy.orm import validates
+from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, TIMESTAMP
+from sqlalchemy.orm import validates, relationship
 
 from app import db
 
@@ -30,3 +30,20 @@ class Review(db.Model):
 
     def __str__(self):
         return f"{self.user_name}: {self.review_date:%x}"
+
+class User(db.Model):
+    __tablename__ = 'user'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    username = Column(String, unique=True, nullable=False)
+    password = Column(String, nullable=False)
+
+class Post(db.Model):
+    __tablename__ = 'post'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    author_id = Column(Integer, ForeignKey('user.id'), nullable=False)
+    created = Column(TIMESTAMP, nullable=False)
+    title = Column(String, nullable=False)
+    body = Column(String, nullable=False)
+    
+    author = relationship("User", back_populates="posts")
