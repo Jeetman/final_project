@@ -5,7 +5,6 @@ from flask import Flask, redirect, render_template, request, send_from_directory
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-from models import Book
 app = Flask(__name__, static_folder='static')
 
 # WEBSITE_HOSTNAME exists only in production environment
@@ -30,7 +29,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # The import must be done after db initialization due to circular import issue
-from models import Restaurant, Review, User, Post
+from models import Book
 from view import auth
 app.register_blueprint(auth.bp)
 
