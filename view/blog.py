@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from view.auth import login_required
 from app import db
-from models import User, Post
+from models import User, Post, Book
 
 bp = Blueprint('blog', __name__)
 
@@ -16,7 +16,20 @@ def index():
                       .order_by(Post.created.desc()) \
                       .all()
     return render_template('blog/index.html', posts=posts)
+@bp.route('/search', methods=('GET'))
+def search():
+    isbn = request.args.get('query')
+    print("Looking up book with isbn " + str(isbn))
 
+    book = Book.query.where(Book.isbn == isbn).first()
+    user = User.query.where(User.id == book.poster_id).first()
+    error = None
+    if book is None:
+        error = 'No posting found!'
+    if error is None:
+        return render_template('blog/view.html', book=book, user=user)
+    
+    flash(error)
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
