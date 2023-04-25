@@ -17,7 +17,7 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = User.query.where(User.id == user_id).first()
+        g.user = User.query.where(User.username == user_id).first()
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
