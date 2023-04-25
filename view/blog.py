@@ -22,11 +22,12 @@ def search():
     print("Looking up book with isbn " + str(isbn))
 
     book = Book.query.where(Book.isbn == isbn).first()
-    user = User.query.where(User.id == book.poster_id).first()
+
     error = None
     if book is None:
         error = 'No posting found!'
     if error is None:
+        user = User.query.where(User.id == book.poster_id).first()
         return render_template('blog/view.html', book=book, user=user)
     
     flash(error)

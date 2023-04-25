@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-
+import csv, json
 from flask import Flask, redirect, render_template, request, send_from_directory, url_for, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -39,17 +39,18 @@ app.register_blueprint(blog.bp)
 app.add_url_rule('/', endpoint='index')
 
 # a simple page that says hello
-@app.route('/users', methods=['GET'])
+@app.route('/books', methods=['GET'])
 def get_users():
-    users = User.query.all()
-    result = []
-    for user in users:
-        user_data = {}
-        user_data['id'] = user.id
-        user_data['username'] = user.username
-        user_data['password'] = user.password
-        result.append(user_data)
-    return jsonify(result)
+    # Open the CSV file
+    data = []
+    with open('books.csv', 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            data.append(row)
+
+    json_data = json.dumps(data)
+
+    return json_data
 #@app.route('/', methods=['GET'])
 #def index():
 #    print('Request for index page received')
