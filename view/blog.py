@@ -28,7 +28,8 @@ def search():
         error = 'No posting found!'
     if error is None:
         user = User.query.where(User.id == book.uploader).first()
-        return render_template('blog/view.html', book=book, user=user)
+        genres = book.genre.split(",")
+        return render_template('blog/view.html', book=book, user=user, genres=genres)
     
     flash(error)
     posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \

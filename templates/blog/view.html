@@ -11,13 +11,21 @@
         </div>
         
         <div>
-        <h2>Author:</h2>
+        <h1>Author:</h2>
         <p>{{ book['author'] }}</p>
         </div>
         
         <div>
-        <h2>ISBN:</h2>
+        <h1>ISBN:</h2>
         <p>{{book['isbn']}}</p>
+        </div>
+        <div>
+            <h1>Genres:</h2>
+            <ul>
+                {% for item in genres %}
+                    <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
         </div>
         {% if book['available'] == True%}
             <div>
