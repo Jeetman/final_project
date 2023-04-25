@@ -36,6 +36,9 @@ class User(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
+    
+    posts = relationship("Post", back_populates="author")
+
 
 class Post(db.Model):
     __tablename__ = 'post'
