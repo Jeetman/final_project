@@ -3,9 +3,9 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 # Python's built-in module for encoding and decoding JSON data
-import json
+#import json
 # Python's built-in module for opening and reading URLs
-from urllib.request import urlopen
+#from urllib.request import urlopen
 from view.auth import login_required
 from app import db
 from models import User, Post, Book
@@ -40,44 +40,44 @@ def create():
         isbn = request.form['isbn']
         error = None
 
-        if not title:
+        if not isbn:
             error = 'ISBN is required.'
 
         if error is not None:
             flash(error)
         else:
-
-            api = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
-            # send a request and get a JSON response
-            resp = urlopen(api + str(isbn))
-            # parse JSON into Python as a dictionary
-            book_data = json.load(resp)
-
-            # create additional variables for easy querying
-            volume_info = book_data["items"][0]["volumeInfo"]
-            author = volume_info["authors"]
-            # practice with conditional expressions!
-            prettify_author = author if len(author) > 1 else author[0]
-
-            # display title, author, page count, publication date
-            # fstrings require Python 3.6 or higher
-            # \n adds a new line for easier reading
-            print(f"\nTitle: {volume_info['title']}")
-            print(f"Author: {prettify_author}")
-            print(f"Page Count: {volume_info['pageCount']}")
-            print(f"Publication Date: {volume_info['publishedDate']}")
-            for cat in volume_info['categories']:
-                print(f"Categories:  {cat}")
-            print("\n***\n")
-
-            # create a new Post object
-            new_book = Book(isbn=int(isbn),title=volume_info['title'], author=prettify_author, poster_id=g.user.id)
-
-            # add the new post to the session
-            db.session.add(new_book)
-
-            # commit the changes to the database
-            db.session.commit()
+#
+            #api = "https://www.googleapis.com/books/v1/volumes?q=isbn:"
+            ## send a request and get a JSON response
+            #resp = urlopen(api + str(isbn))
+            ## parse JSON into Python as a dictionary
+            #book_data = json.load(resp)
+#
+            ## create additional variables for easy querying
+            #volume_info = book_data["items"][0]["volumeInfo"]
+            #author = volume_info["authors"]
+            ## practice with conditional expressions!
+            #prettify_author = author if len(author) > 1 else author[0]
+#
+            ## display title, author, page count, publication date
+            ## fstrings require Python 3.6 or higher
+            ## \n adds a new line for easier reading
+            #print(f"\nTitle: {volume_info['title']}")
+            #print(f"Author: {prettify_author}")
+            #print(f"Page Count: {volume_info['pageCount']}")
+            #print(f"Publication Date: {volume_info['publishedDate']}")
+            #for cat in volume_info['categories']:
+            #    print(f"Categories:  {cat}")
+            #print("\n***\n")
+#
+            ## create a new Post object
+            #new_book = Book(isbn=int(isbn),title=volume_info['title'], author=prettify_author, poster_id=g.user.id)
+#
+            ## add the new post to the session
+            #db.session.add(new_book)
+#
+            ## commit the changes to the database
+            #db.session.commit()
 
             return redirect(url_for('blog.index'))
 
