@@ -41,23 +41,24 @@ def search():
 @login_required
 def create():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        isbn = request.form['isbn']
         error = None
 
-        if not title:
-            error = 'Title is required.'
+        if not isbn:
+            error = 'ISBN is required.'
 
         if error is not None:
             flash(error)
         else:
-            # create a new Post object
-            new_post = Post(title=title, body=body, author_id=g.user.id)
 
-            # add the new post to the session
-            db.session.add(new_post)
+            book = Book.query.where(Book.isbn == isbn).first()
 
-            # commit the changes to the database
+            book.available = "True"
+            
+            user = User.query.where(User.id == g.user['id']).first()
+            book.uploader = user.username
+
+            ## commit the changes to the database
             db.session.commit()
 
             return redirect(url_for('blog.index'))
