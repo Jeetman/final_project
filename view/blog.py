@@ -12,7 +12,10 @@ bp = Blueprint('blog', __name__)
 @bp.route('/')
 def index():
     books = Book.query.all()
-    return render_template('blog/index.html', books=books)
+    genres = []
+    for book in books:
+        genres.append( book.genre.split(",") )
+    return render_template('blog/index.html', books=books, genres=genres)
 @bp.route('/search')
 def search():
     isbn = request.args.get('query')
