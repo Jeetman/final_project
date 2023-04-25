@@ -63,8 +63,7 @@ def get_post(id, check_author=True):
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
-    post = get_post(id)
-
+    post = Post.query.filter_by(id=id).first()
     if request.method == 'POST':
         title = request.form['title']
         body = request.form['body']
@@ -85,7 +84,7 @@ def update(id):
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
-    post = get_post(id)
+    post = Post.query.filter_by(id=id).first()
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('blog.index'))
