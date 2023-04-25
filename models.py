@@ -45,7 +45,7 @@ class Post(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     author_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    created = Column(TIMESTAMP, nullable=False)
+    created = Column(TIMESTAMP, nullable=True)
     title = Column(String, nullable=False)
     body = Column(String, nullable=False)
     
