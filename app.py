@@ -8,7 +8,7 @@ from flask_wtf.csrf import CSRFProtect
 
 
 app = Flask(__name__, static_folder='static')
-csrf = CSRFProtect(app)
+#csrf = CSRFProtect(app)
 
 # WEBSITE_HOSTNAME exists only in production environment
 if 'WEBSITE_HOSTNAME' not in os.environ:
