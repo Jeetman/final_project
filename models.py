@@ -53,7 +53,7 @@ class Post(db.Model):
 
 class Book(db.Model):
     __tablename__ = 'books'
-    isbn = Column(Integer, primary_key=True)
+    isbn = Column(String, primary_key=True)
     author = Column(String, nullable=False)
     title = Column(String, nullable=False)
     uploader = Column(String,nullable=True)

@@ -53,7 +53,7 @@ def upload_books():
             genre4 = row[7]
             genreAll = genre + "," + genre2 + "," + genre3 + "," + genre4
             ## create a new Post object
-            new_book = Book(isbn=int(isbn),title=book_title, author=author, genre=genreAll, available="False")
+            new_book = Book(isbn=isbn,title=book_title, author=author, genre=genreAll, available="False")
 
             ## add the new post to the session
             db.session.add(new_book)

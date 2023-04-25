@@ -32,7 +32,7 @@ def upgrade():
         sa.PrimaryKeyConstraint('id')
     )
     op.create_table('books',
-        sa.Column('isbn', sa.Integer(), nullable=False),
+        sa.Column('isbn', sa.String(), nullable=False),
         sa.Column('author', sa.String(), nullable=False),
         sa.Column('title', sa.String(), nullable=False),
         sa.Column('uploader', sa.String(), nullable=True),

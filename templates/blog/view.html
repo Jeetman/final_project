@@ -19,12 +19,13 @@
         <h2>ISBN:</h2>
         <p>{{book['isbn']}}</p>
         </div>
-        
-        <div>
-        <h2>Uploaded by:</h2>
-        <p>{{user['username']}}</p>
-        </div>
-        {% if g.user['id'] == book['poster_id'] %}
+        {% if book['available'] == True%}
+            <div>
+                <h2>Uploaded by:</h2>
+                <p>{{user['username']}}</p>
+            </div>
+        {% endif %}
+        {% if g.user['id'] == book['uploader'] %}
             <a class="action" href="{{ url_for('blog.update', id=book['isbn']) }}">Edit</a>
         {% endif %}
     </header>
