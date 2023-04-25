@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from view.auth import login_required
 from app import db
-from models import User, Post
+from models import User, Post, Book
 
 bp = Blueprint('blog', __name__)
 
@@ -16,28 +16,42 @@ def index():
                       .order_by(Post.created.desc()) \
                       .all()
     return render_template('blog/index.html', posts=posts)
+@bp.route('/search', methods=('GET'))
+def search(isbn):
+    print("Looking up book with isbn " + str(isbn))
+
+    book = Book.query.where(Book.isbn == isbn).first()
+    user = User.query.where(User.id == book.poster_id).first()
+    error = None
+    if book is None:
+        error = 'No posting found!'
+    if error is None:
+        return render_template('blog/view.html', book=book, user=user)
+    
+    flash(error)
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
     if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
+        isbn = request.form['isbn']
         error = None
 
-        if not title:
-            error = 'Title is required.'
+        if not isbn:
+            error = 'ISBN is required.'
 
         if error is not None:
             flash(error)
         else:
-            # create a new Post object
-            new_post = Post(title=title, body=body, author_id=g.user.id)
 
-            # add the new post to the session
-            db.session.add(new_post)
 
-            # commit the changes to the database
+            ## create a new Post object
+            new_book = Book(isbn=int(isbn),title="jatt", author="jassyb", poster_id=g.user.id)
+
+            ## add the new post to the session
+            db.session.add(new_book)
+
+            ## commit the changes to the database
             db.session.commit()
 
             return redirect(url_for('blog.index'))
