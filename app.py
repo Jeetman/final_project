@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, send_from_directory, url_for
+from flask import Flask, redirect, render_template, request, send_from_directory, url_for, jsonify
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf.csrf import CSRFProtect
@@ -41,10 +41,17 @@ app.register_blueprint(blog.bp)
 app.add_url_rule('/', endpoint='index')
 
 # a simple page that says hello
-@app.route('/hello')
-def hello():
-    print(User.query.all())
-    return "hello world"
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    result = []
+    for user in users:
+        user_data = {}
+        user_data['id'] = user.id
+        user_data['username'] = user.username
+        user_data['password'] = user.password
+        result.append(user_data)
+    return jsonify(result)
 #@app.route('/', methods=['GET'])
 #def index():
 #    print('Request for index page received')
