@@ -27,7 +27,7 @@ def search():
     if book is None:
         error = 'No posting found!'
     if error is None:
-        user = User.query.where(User.id == book.uploader).first()
+        user = User.query.where(User.username == book.uploader).first()
         genres = book.genre.split(",")
         return render_template('blog/view.html', book=book, user=user, genres=genres)
     
