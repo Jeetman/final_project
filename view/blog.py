@@ -16,7 +16,7 @@ def index():
                       .order_by(Post.created.desc()) \
                       .all()
     return render_template('blog/index.html', posts=posts)
-@bp.route('/search', methods=('GET'))
+@bp.route('/search')
 def search():
     isbn = request.args.get('query')
     print("Looking up book with isbn " + str(isbn))
