@@ -39,7 +39,6 @@ class User(db.Model):
     password = Column(String, nullable=False)
     
     posts = relationship("Post", back_populates="author")
-    books = relationship("Book", back_populates="poster")
 
 class Post(db.Model):
     __tablename__ = 'post'
@@ -57,9 +56,9 @@ class Book(db.Model):
     isbn = Column(Integer, primary_key=True)
     author = Column(String, nullable=False)
     title = Column(String, nullable=False)
-    poster_id = Column(Integer, ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
-    
-    poster = relationship('User', back_populates='books')
+    uploader = Column(String,nullable=True)
+    available = Column(String,nullable=False)
+    genre = Column(String,nullable=False)
 
     def __repr__(self):
-        return f"<Book(isbn='{self.isbn}', title='{self.title}', author='{self.author}', poster='{self.poster_id}')>"
+        return f"<Book(isbn='{self.isbn}', title='{self.title}', author='{self.author}')>"

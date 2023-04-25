@@ -5,7 +5,7 @@ from flask import Flask, redirect, render_template, request, send_from_directory
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
-
+from models import Book
 app = Flask(__name__, static_folder='static')
 
 # WEBSITE_HOSTNAME exists only in production environment
@@ -40,17 +40,28 @@ app.add_url_rule('/', endpoint='index')
 
 # a simple page that says hello
 @app.route('/books', methods=['GET'])
-def get_users():
+def upload_books():
     # Open the CSV file
-    data = []
     with open('books.csv', 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            data.append(row)
+            book_title = row[0]
+            isbn = row[1]
+            author = row[2]
+            genre = row[4]
+            genre2 = row[5]
+            genre3 = row[6]
+            genre4 = row[7]
+            genreAll = genre + "," + genre2 + "," + genre3 + "," + genre4
+            ## create a new Post object
+            new_book = Book(isbn=int(isbn),title=book_title, author=author, genre=genreAll, available="False")
 
-    json_data = json.dumps(data)
+            ## add the new post to the session
+            db.session.add(new_book)
 
-    return json_data
+            ## commit the changes to the database
+            db.session.commit()
+    return str(Book.query.all())
 #@app.route('/', methods=['GET'])
 #def index():
 #    print('Request for index page received')
