@@ -53,7 +53,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         error = None
-        user = User.query.where(User.id == username).first()
+        user = User.query.where(User.username == username).first()
 
         if user is None:
             error = 'Incorrect username.'
