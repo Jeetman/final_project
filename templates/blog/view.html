@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block header %}
+  <h1>{% block title %}Book Details{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+
+<article class="book">
+    <header>
+        <div>
+        <h1>{{ book['title'] }}</h2>
+        </div>
+        
+        <div>
+        <h2>Author:</h2>
+        <p>{{ book['author'] }}</p>
+        </div>
+        
+        <div>
+        <h2>ISBN:</h2>
+        <p>{{book['isbn']}}</p>
+        </div>
+        
+        <div>
+        <h2>Uploaded by:</h2>
+        <p>{{user['username']}}</p>
+        </div>
+        {% if g.user['id'] == book['poster_id'] %}
+            <a class="action" href="{{ url_for('blog.update', id=book['isbn']) }}">Edit</a>
+        {% endif %}
+    </header>
+</article>
+
+{% endblock %}
