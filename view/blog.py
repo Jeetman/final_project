@@ -11,10 +11,11 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-    posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \
-                      .join(User, Post.author_id == User.id) \
-                      .order_by(Post.created.desc()) \
-                      .all()
+    #posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \
+     #                 .join(User, Post.author_id == User.id) \
+      #                .order_by(Post.created.desc()) \
+       #               .all()
+    posts = None
     return render_template('blog/index.html', posts=posts)
 #@bp.route('/create', methods=('GET', 'POST'))
 #@login_required
