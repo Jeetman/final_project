@@ -37,15 +37,6 @@
                     {% endfor %}
                 </ul>
             </div>
-            {% if book['available'] == "True"%}
-                <div>
-                    <h1>Uploaded by:</h2>
-                    <p>{{user['username']}}</p>
-                </div>
-            {% endif %}
-            {% if g.user['id'] == user['id'] %}
-                <a class="action" href="{{ url_for('blog.update', id=book['isbn']) }}">Edit</a>
-            {% endif %}
         </header>
     </article>
     {% if not loop.last %}
