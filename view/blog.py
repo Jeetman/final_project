@@ -33,7 +33,7 @@ def create():
             flash(error)
         else:
             # create a new Post object
-            new_post = Post(title=title, body=body, author_id=g.user['id'])
+            new_post = Post(title=title, body=body, author_id=g.user.id)
 
             # add the new post to the session
             db.session.add(new_post)
@@ -56,7 +56,7 @@ def get_post(id, check_author=True):
     if post is None:
         abort(404, f"Post id {id} doesn't exist.")
 
-    if check_author and post.author_id != g.user['id']:
+    if check_author and post.author_id != g.user.id:
         abort(403)
 
     return post
