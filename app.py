@@ -43,7 +43,8 @@ app.add_url_rule('/', endpoint='index')
 # a simple page that says hello
 @app.route('/hello')
 def hello():
-    return User.query.all()
+    print(User.query.all())
+    return "hello world"
 #@app.route('/', methods=['GET'])
 #def index():
 #    print('Request for index page received')
