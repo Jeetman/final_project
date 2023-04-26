@@ -12,11 +12,22 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-    books = Book.query.all()
-    genres = []
-    for book in books:
-        genres.append( book.genre.split(",") )
-    return render_template('blog/index.html', books=books, genres=genres)
+    if g.user is not None:
+        user = User.query.where(User.id == g.user.id)
+        user_genres = user.genre.split(",")
+        #get recomendations
+        search_term = user_genres[0]
+        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).limit(5).all()
+        genres = []
+        for b in books:
+            genres.append( b.genre.split(",") )
+        return render_template('blog/index.html', books=books, genres=genres)
+    else:
+        books = Book.query.all()
+        genres = []
+        for book in books:
+            genres.append( book.genre.split(",") )
+        return render_template('blog/index.html', books=books, genres=genres)
 @bp.route('/search')
 def search():
     isbn = request.args.get('query')

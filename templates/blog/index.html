@@ -12,12 +12,17 @@
     <input class="form-control me-2" type="search" name="query" placeholder="Search...">
     <button class="btn btn-outline-success" type="submit">Search</button>
   </form>
-  <h1>Your Recommendations</h1>
+  {% if g.user %}
+    <h1>Your Recommendations {{ g.user['username'] }}</h1>
+  {% else %}
+    <h1>Check out our collection!</h1>
+  {% endif %}
+  
   {% for book in books %}
       <article class="book">
         <header>
             <div>
-            <h1>{{ book['title'] }}</h2>
+            <h2>{{ book['title'] }}</h2>
             </div>
             
             <div>
