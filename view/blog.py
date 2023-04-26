@@ -16,6 +16,7 @@ def index():
     if g.user is not None:
         user = User.query.where(User.id == g.user.id)
         if user is not None:
+            print(user)
             user_genres = user.genre.split(",")
             #get recomendations
             search_term = user_genres[0]

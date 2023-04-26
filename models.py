@@ -11,7 +11,8 @@ class User(db.Model):
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
     genre = Column(String,nullable=False)
-
+    def __repr__(self):
+            return f"<User(id='{self.id}', name='{self.username}', genre='{self.genre}')>"
 class Book(db.Model):
     __tablename__ = 'books'
     isbn = Column(String, primary_key=True)
