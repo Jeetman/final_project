@@ -14,7 +14,7 @@ bp = Blueprint('blog', __name__)
 @login_required
 def index():
     if g.user is not None:
-        user = User.query.where(User.id == g.user.id)
+        user = User.query.where(User.id == g.user.id).first()
         if user is not None:
             print(str(user))
             user_genres = user.genre.split(",")
