@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from view.auth import login_required
 from app import db
 from models import User, Book
-from sqlalchemy import text
+from sqlalchemy import text, not_
 
 bp = Blueprint('blog', __name__)
 
@@ -33,7 +33,7 @@ def search():
 
         #get recomendations
         search_term = bgenre[0]
-        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).limit(5).all()
+        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).filter(not_(Book.isbn == isbn)).limit(5).all()
         genres = []
         for b in books:
             genres.append( b.genre.split(",") )
