@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 from view.auth import login_required
 from app import db
-from models import User, Post, Book
+from models import User, Book
 
 bp = Blueprint('blog', __name__)
 

@@ -7,7 +7,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy.exc import IntegrityError
 
 from app import db
-from models import User, Post
+from models import User
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.before_app_request
