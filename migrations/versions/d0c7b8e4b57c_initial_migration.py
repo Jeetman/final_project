@@ -22,15 +22,6 @@ def upgrade():
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('username')
     )
-    op.create_table('post',
-        sa.Column('id', sa.Integer(), nullable=False),
-        sa.Column('author_id', sa.Integer(), nullable=False),
-        sa.Column('created', sa.TIMESTAMP(), server_default=sa.func.current_timestamp()),
-        sa.Column('title', sa.String(), nullable=False),
-        sa.Column('body', sa.String(), nullable=False),
-        sa.ForeignKeyConstraint(['author_id'], ['user.id'], ),
-        sa.PrimaryKeyConstraint('id')
-    )
     op.create_table('books',
         sa.Column('isbn', sa.String(), nullable=False),
         sa.Column('author', sa.String(), nullable=False),
@@ -46,7 +37,6 @@ def upgrade():
 def downgrade():
 
     op.drop_table('books')
-    op.drop_table('post')
     op.drop_table('user')
 
     # ### end Alembic commands ###
