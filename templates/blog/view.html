@@ -35,6 +35,13 @@
         {% endif %}
     </header>
 </article>
+<hr>
+<h1>Search Again</h1>
+<form class="d-flex" action="/search" method="get">
+    <input class="form-control me-2" type="search" name="query" placeholder="Search...">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+<hr>
 <h1>You might also enjoy...</h1>
   {% for book in books %}
       <article class="book">

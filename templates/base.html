@@ -2,7 +2,7 @@
 <title>Home - Book Exchange</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <nav>
-  <h1>Book Exchange</h1>
+  <a href="{{ url_for('blog.index') }}"><h1>Book Exchange</h1></a>
   <ul>
     {% if g.user %}
       <li><span>{{ g.user['username'] }}</span>
