@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.exceptions import abort
 
@@ -11,17 +11,20 @@ from sqlalchemy import text, not_
 bp = Blueprint('blog', __name__)
 
 @bp.route('/')
+@login_required
 def index():
     if g.user is not None:
         user = User.query.where(User.id == g.user.id)
-        user_genres = user.genre.split(",")
-        #get recomendations
-        search_term = user_genres[0]
-        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).limit(5).all()
-        genres = []
-        for b in books:
-            genres.append( b.genre.split(",") )
-        return render_template('blog/index.html', books=books, genres=genres)
+        if user is not None:
+            user_genres = user.genre.split(",")
+            #get recomendations
+            search_term = user_genres[0]
+            books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).limit(5).all()
+            genres = []
+            for b in books:
+                genres.append( b.genre.split(",") )
+            return render_template('blog/index.html', books=books, genres=genres)
+        return render_template('blog/index.html', books=[], genres=[])
     else:
         books = Book.query.all()
         genres = []
