@@ -38,7 +38,7 @@ app.register_blueprint(blog.bp)
 app.add_url_rule('/', endpoint='index')
 
 # a simple page that says hello
-@app.route('/books', methods=['GET'])
+@app.route('/upload', methods=['GET'])
 def upload_books():
     # Open the CSV file
     with open('books.csv', 'r') as csvfile:
@@ -60,7 +60,35 @@ def upload_books():
 
             ## commit the changes to the database
             db.session.commit()
-    return str(User.query.all())
+    return str(Book.query.all())
+# a simple page that says hello
+@app.route('/books', methods=['GET'])
+def books():
+    books = Book.query.all()
+    book_list = []
+    for book in books:
+        book_dict = {
+            'isbn': book.isbn,
+            'title': book.title,
+            'author': book.author,
+            'genre': book.genre
+        }
+        book_list.append(book_dict)
+    return jsonify(book_list)
+
+# a simple page that says hello
+@app.route('/users', methods=['GET'])
+def users():
+    users = User.query.all()
+    user_list = []
+    for user in users:
+        user_dict = {
+            'id': user.id,
+            'username': user.username,
+            'genre': user.genre
+        }
+        user_list.append(user_dict)
+    return jsonify(user_list)
 
 if __name__ == '__main__':
     app.run()
