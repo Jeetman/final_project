@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block header %}
-  <h1>{% block title %}Book Details{% endblock %}</h1>
+  <h1>{% block title %}Search Results for {{book['isbn']}}{% endblock %}</h1>
 {% endblock %}
 {% block content %}
 
 <article class="book">
     <header>
         <div>
-        <h1>{{ book['title'] }}</h2>
+        <h2>{{ book['title'] }}</h2>
         </div>
         
         <div>
-        <h1>Author:</h2>
+        <h1>Author:</h1>
         <p>{{ book['author'] }}</p>
         </div>
         
         <div>
-        <h1>ISBN:</h2>
+        <h1>ISBN:</h1>
         <p>{{book['isbn']}}</p>
         </div>
         <div>
-            <h1>Genres:</h2>
+            <h1>Genres:</h1>
             <ul>
                 {% for item in genres %}
                     <li>{{ item }}</li>
@@ -29,14 +29,41 @@
         </div>
         {% if book['available'] == "True"%}
             <div>
-                <h1>Uploaded by:</h2>
+                <h1>Uploaded by:</h1>
                 <p>{{user['username']}}</p>
             </div>
         {% endif %}
-        {% if g.user['id'] == user['id'] %}
-            <a class="action" href="{{ url_for('blog.update', id=book['isbn']) }}">Edit</a>
-        {% endif %}
     </header>
 </article>
-
+<h1>You might also enjoy...</h1>
+  {% for book in books %}
+      <article class="book">
+        <header>
+            <div>
+            <h1>{{ book['title'] }}</h2>
+            </div>
+            
+            <div>
+            <h1>Author:</h2>
+            <p>{{ book['author'] }}</p>
+            </div>
+            
+            <div>
+            <h1>ISBN:</h2>
+            <p>{{book['isbn']}}</p>
+            </div>
+            <div>
+                <h1>Genres:</h2>
+                <ul>
+                    {% for item in genres[loop.index0] %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
 {% endblock %}

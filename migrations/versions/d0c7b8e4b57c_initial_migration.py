@@ -36,7 +36,6 @@ def upgrade():
 
 
 def downgrade():
-    op.drop_table('post')
     op.drop_table('books')
     op.drop_table('user')
 
