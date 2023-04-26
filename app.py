@@ -29,7 +29,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # The import must be done after db initialization due to circular import issue
-from models import Book
+from models import Book, User
 from view import auth
 app.register_blueprint(auth.bp)
 
@@ -60,7 +60,7 @@ def upload_books():
 
             ## commit the changes to the database
             db.session.commit()
-    return str(Book.query.all())
+    return str(User.query.all())
 
 if __name__ == '__main__':
     app.run()

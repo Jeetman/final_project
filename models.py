@@ -10,6 +10,7 @@ class User(db.Model):
     id = Column(Integer, primary_key=True, autoincrement=True)
     username = Column(String, unique=True, nullable=False)
     password = Column(String, nullable=False)
+    genre = Column(String,nullable=False)
 
 class Book(db.Model):
     __tablename__ = 'books'

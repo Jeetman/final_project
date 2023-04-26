@@ -32,11 +32,11 @@ def search():
         return render_template('blog/view.html', book=book, user=user, genres=genres)
     
     flash(error)
-    posts = db.session.query(Post.id, Post.title, Post.body, Post.created, Post.author_id, User.username) \
-                      .join(User, Post.author_id == User.id) \
-                      .order_by(Post.created.desc()) \
-                      .all()
-    return render_template('blog/index.html', posts=posts)
+    books = Book.query.all()
+    genres = []
+    for book in books:
+        genres.append( book.genre.split(",") )
+    return render_template('blog/index.html', books=books, genres=genres)
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
