@@ -33,7 +33,7 @@ def search():
 
         #get recomendations
         search_term = bgenre[0]
-        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).all()
+        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).limit(5).all()
         genres = []
         for b in books:
             genres.append( b.genre.split(",") )
