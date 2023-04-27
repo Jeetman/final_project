@@ -5,3 +5,5 @@ flask_wtf
 psycopg2
 python-dotenv
 SQLAlchemy
+azure-cognitiveservices-personalizer
+azure-core
