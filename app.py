@@ -102,6 +102,7 @@ def users():
 # a simple page that says hello
 @app.route('/ai', methods=['GET'])
 def ai():
+    print("Starting training")
     key = "88dfccbcd0b34afa9377da3d8dad75ee"
     endpoint = "https://book-recommender.cognitiveservices.azure.com/"
 
@@ -266,13 +267,6 @@ def ai():
             print(reward_score)
             # print("------------\n")
 
-    continue_loop = True
-    while continue_loop:
-        run_personalizer_cycle()
-
-        br = input("Press Q to exit, or any other key to run another loop: ")
-        if(br.lower()=='q'):
-            continue_loop = False
     # </snippet_2>
 
     # <snippet_multi>
