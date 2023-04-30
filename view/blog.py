@@ -127,7 +127,7 @@ def search():
         rank_request = RankRequest(actions=actions, context_features=profile)
         response = client.rank(rank_request=rank_request)
         ranked_actions = [(action.id, action.probability) for action in response.ranking]
-        top_actions = heapq.nlargest(ranked_actions.count, ranked_actions, key=lambda x: x[1])
+        top_actions = heapq.nlargest(6, ranked_actions, key=lambda x: x[1])
         print(top_actions)
         #get recomendations
         count = 0
