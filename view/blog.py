@@ -10,8 +10,8 @@ from app import db
 from models import User, Book
 from sqlalchemy import text, not_
 import heapq, csv
-key = "9a506bda75c644d2ad1870de72c4e070"
-endpoint = "https://book-recommender-2.cognitiveservices.azure.com/"
+key = "d2029f0050c34f1dac4cbd1f97da6bd6"
+endpoint = "https://book-recommender-3.cognitiveservices.azure.com/"
 client = PersonalizerClient(endpoint, CognitiveServicesCredentials(key))
 # Open the CSV file
 actions_and_features = {}
