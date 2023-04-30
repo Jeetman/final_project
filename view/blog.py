@@ -6,14 +6,66 @@ from azure.cognitiveservices.personalizer import PersonalizerClient
 from azure.cognitiveservices.personalizer.models import RankableAction, RewardRequest, RankRequest
 from msrest.authentication import CognitiveServicesCredentials
 from view.auth import login_required
-from app import db, actions_and_features
+from app import db
 from models import User, Book
 from sqlalchemy import text, not_
 import heapq, csv
 key = "9a506bda75c644d2ad1870de72c4e070"
 endpoint = "https://book-recommender-2.cognitiveservices.azure.com/"
 client = PersonalizerClient(endpoint, CognitiveServicesCredentials(key))
+# Open the CSV file
+actions_and_features = {}
+book_attr = []
+# Instantiate a Personalizer client
+genre_list = ["Fiction","Adventure","Romance","Modernist","Coming-of-Age","Psychological","Existentialism"]
+# Open the CSV file
+unique_genre_set = set()
+with open('books.csv') as csv_file:
+    # Read the data from the CSV file as a dictionary
+    csv_reader = csv.DictReader(csv_file)
+    # Initialize an empty dictionary to store the book information
+    books = {}
+    # Loop through each row of the CSV file
+    for row in csv_reader:
+        # Create a dictionary to store the book information
+        book_info = {
+            "title": row['Book Title'],
+           # "year": row['Year'],
+            "Author": row['Author']
+        }
+        genre = {}
+        # genre_list = []
+        for genre_ in genre_list:
+          genre[genre_] = False
 
+        if row['Genre 1'] is not None and row['Genre 1'] != '':
+            genre[row['Genre 1']] = True
+            genre_list.append(row['Genre 1'])
+            unique_genre_set.add(row['Genre 1'])
+        if row['Genre 2'] is not None and row['Genre 2'] != '':
+            genre[row['Genre 2']] = True
+            genre_list.append(row['Genre 2'])
+            unique_genre_set.add(row['Genre 2'])
+        if row['Genre 3'] is not None and row['Genre 3'] != '':
+            genre[row['Genre 3']] = True
+            genre_list.append(row['Genre 3'])
+            unique_genre_set.add(row['Genre 3'])
+        if row['Genre 4'] is not None and row['Genre 4'] != '':
+            genre[row['Genre 4']] = True
+            genre_list.append(row['Genre 4'])
+            unique_genre_set.add(row['Genre 4'])
+
+        book_data = {
+            "book_info": book_info,
+            "genre": genre
+            # "genre": set(genre_list)
+            # "attributes": attributes
+        }
+        book_attr.append(row['Book Title'])
+        book_attr.append(row['Author'])
+        #book_attr.append(row['ISBN'])
+        books[row['ISBN']] = book_data
+    actions_and_features = books
 bp = Blueprint('blog', __name__)
 
 def get_actions():
