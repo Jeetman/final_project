@@ -121,10 +121,10 @@ def search():
         error = 'No posting found!'
     if error is None:
         user = User.query.where(User.username == book.uploader).first()
-        bgenre = book.genre.split(",")[:3]
+        bgenre = book.genre.split(",")
 
         #get recomendations
-        profile = [{'genre_preferences':set(bgenre)}]
+        profile = [{'genre_preferences':set(bgenre[:3])}]
         actions = get_actions()
         rank_request = RankRequest(actions=actions, context_features=profile)
         response = client.rank(rank_request=rank_request)
