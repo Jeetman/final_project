@@ -78,8 +78,6 @@ def get_actions():
 @bp.route('/')
 @login_required
 def index():
-    print("arrived at index")
-    print(actions_and_features)
     if g.user is not None:
         user = User.query.where(User.id == g.user.id).first()
         if user is not None:
@@ -129,14 +127,19 @@ def search():
         rank_request = RankRequest(actions=actions, context_features=profile)
         response = client.rank(rank_request=rank_request)
         ranked_actions = [(action.id, action.probability) for action in response.ranking]
-        top_actions = heapq.nlargest(5, ranked_actions, key=lambda x: x[1])
+        top_actions = heapq.nlargest(ranked_actions.count(), ranked_actions, key=lambda x: x[1])
         print(top_actions)
         #get recomendations
+        count = 0
         books = []
         for rec in top_actions:
-            isbn = rec[0]
-            data = Book.query.where(Book.isbn == isbn).first()
-            books.append(data)
+            isbn2 = rec[0]
+            if isbn != isbn2:
+                data = Book.query.where(Book.isbn == isbn2).first()
+                books.append(data)
+                count = count + 1
+            if count == 5:
+                break
         genres = []
         for b in books:
             genres.append( b.genre.split(",") )
