@@ -1,11 +1,12 @@
-Book Title,ISBN,Author,Year,Genre 1,Genre 2,Genre 3,Genre 4,Attribute 1,Attribute 2,Attribute 3
-The Catcher in the Rye,9780316769488,J.D. Salinger,1951,Fiction,Coming-of-Age,Psychological,Existentialism,Classic,American Literature
-Crime and Punishment,9780140449136,Fyodor Dostoyevsky,1866,Fiction,Psychological,Thriller,Existentialism,Russian Literature
-Invisible Man,9780679732761,Ralph Ellison,1952,Fiction,Existentialism,Social Commentary,African American Literature,National Book Award Winner
-The Adventures of Huckleberry Finn,9780486280615,Mark Twain,1884,Fiction,Adventure,Coming-of-Age,Classic,American Literature
-The Stranger,9780679720201,Albert Camus,1942,Fiction,Existentialism,Philosophical,Psychological,French Literature
-To Kill a Mockingbird,9780061120084,Harper Lee,1960,Fiction,Coming-of-Age,Legal Drama,Southern Gothic,Pulitzer Prize Winner,Classic,American Literature
-Pride and Prejudice,9780486284736,Jane Austen,1813,Fiction,Romance,Regency,Comedy of Manners,Classic,British Literature
-To the Lighthouse,9780156907392,Virginia Woolf,1927,Fiction,Modernist,Literary Fiction,Feminism,Classic,British Literature,Stream of Consciousness
-Beloved,9781400033416,Toni Morrison,1987,Fiction,Postmodernism,Historical Fiction,Social Commentary,Nobel Prize Winner,African American Literature
-The Sun Also Rises,9780743297332,Ernest Hemingway,1926,Fiction,Modernist,Expatriate Literature,Lost Generation,Classic,American Literature
+Book Title,ISBN,Author,Year,Genre 1,Genre 2,Genre 3,Genre 4
+The Catcher in the Rye,9780316769488,J.D. Salinger,1951,Fiction,Adventure,Romance,Modernist
+Crime and Punishment,9780140449136,Fyodor Dostoyevsky,1866,Coming-of-Age,Psychological,Existentialism,Classic
+Invisible Man,9780679732761,Ralph Ellison,1952,Horror,Fiction,Adventure,Romance
+The Adventures of Huckleberry Finn,9780486280615,Mark Twain,1884,Modernist,Coming-of-Age,Psychological,Existentialism
+The Stranger,9780679720201,Albert Camus,1942,Classic,Horror,Fiction,Adventure
+To Kill a Mockingbird,9780061120084,Harper Lee,1960,Romance,Modernist,Coming-of-Age,Psychological
+Pride and Prejudice,9780486284736,Jane Austen,1813,Existentialism,Classic,Horror,Fiction
+To the Lighthouse,9780156907392,Virginia Woolf,1927,Adventure,Romance,Modernist,Coming-of-Age
+Beloved,9781400033416,Toni Morrison,1987,Psychological,Existentialism,Classic,Horror
+The Sun Also Rises,9780743297332,Ernest Hemingway,1926,Fiction,Adventure,Romance,Modernist
+The Lord of the Rings,9780544003415,J.R.R. Tolkien,1954,Coming-of-Age,Psychological,Existentialism,Classic
