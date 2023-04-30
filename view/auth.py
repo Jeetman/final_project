@@ -24,7 +24,7 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        genreAll = request.form['genre1'] + "," + request.form['genre2'] + "," + request.form['genre3'] + "," + request.form['genre4'] + "," + request.form['genre5']
+        genreAll = request.form['genre1'] + "," + request.form['genre2'] + "," + request.form['genre3']
         error = None
         print(genreAll)
         if not username:
