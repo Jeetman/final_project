@@ -26,6 +26,8 @@ def get_actions():
 @bp.route('/')
 @login_required
 def index():
+    print("arrived at index")
+    print(actions_and_features)
     if g.user is not None:
         user = User.query.where(User.id == g.user.id).first()
         if user is not None:
