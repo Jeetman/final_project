@@ -121,11 +121,22 @@ def search():
         error = 'No posting found!'
     if error is None:
         user = User.query.where(User.username == book.uploader).first()
-        bgenre = book.genre.split(",")
+        bgenre = book.genre.split(",")[:3]
 
         #get recomendations
-        search_term = bgenre[0]
-        books = db.session.query(Book).filter(text("genre LIKE '%' || :search_term || '%'")).params(search_term=search_term).filter(not_(Book.isbn == isbn)).limit(5).all()
+        profile = [{'genre_preferences':set(bgenre)}]
+        actions = get_actions()
+        rank_request = RankRequest(actions=actions, context_features=profile)
+        response = client.rank(rank_request=rank_request)
+        ranked_actions = [(action.id, action.probability) for action in response.ranking]
+        top_actions = heapq.nlargest(5, ranked_actions, key=lambda x: x[1])
+        print(top_actions)
+        #get recomendations
+        books = []
+        for rec in top_actions:
+            isbn = rec[0]
+            data = Book.query.where(Book.isbn == isbn).first()
+            books.append(data)
         genres = []
         for b in books:
             genres.append( b.genre.split(",") )
