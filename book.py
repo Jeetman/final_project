@@ -30,7 +30,7 @@ with open(unique_genre_file, newline='') as csvfile:
         genre_list.append(row[0])
 
 # Open the CSV file
-with open('data.csv') as csv_file:
+with open('books.csv') as csv_file:
     # Read the data from the CSV file as a dictionary
     csv_reader = csv.DictReader(csv_file)
     # Initialize an empty dictionary to store the book information
