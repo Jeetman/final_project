@@ -62,14 +62,15 @@ def search():
         #get recomendations
         #get recomendations
         books = Book.query.all()
-        for book in books:
-            book_genres = book.genre.split(",")
-            count = 0
-            for genre in book_genres:
-                for u_genre in bgenre:
-                    if genre == u_genre:
-                        count = count + 1;
-            recs[book] = count
+        for book2 in books:
+            if book2.isbn != book.isbn:
+                book_genres = book2.genre.split(",")
+                count = 0
+                for genre in book_genres:
+                    for u_genre in bgenre:
+                        if genre == u_genre:
+                            count = count + 1;
+                recs[book2] = count
         final = nlargest(5, recs, key = recs.get)
         genres = []
         for b in books:
