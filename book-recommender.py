@@ -10,8 +10,8 @@ from msrest.authentication import CognitiveServicesCredentials
 
 import datetime, json, os, time, uuid, random
 
-key = "d11693a18f454076a7c81afaccf5b4d8"
-endpoint = "https://book-recommender-5.cognitiveservices.azure.com/"
+key = "3b74ee8a944146ff924b3b7707a2689f"
+endpoint = "https://book-recommender-6.cognitiveservices.azure.com/"
 
 # Instantiate a Personalizer client
 client = PersonalizerClient(endpoint, CognitiveServicesCredentials(key))
