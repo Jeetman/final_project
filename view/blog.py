@@ -51,7 +51,7 @@ def search():
     print("Looking up book with isbn " + str(isbn))
 
     book = Book.query.where(Book.isbn == isbn).first()
-
+    recs = {}
     error = None
     if book is None:
         error = 'No posting found!'
@@ -60,12 +60,22 @@ def search():
         bgenre = book.genre.split(",")
 
         #get recomendations
-
+        #get recomendations
+        books = Book.query.all()
+        for book in books:
+            book_genres = book.genre.split(",")
+            count = 0
+            for genre in book_genres:
+                for u_genre in bgenre:
+                    if genre == u_genre:
+                        count = count + 1;
+            recs[book] = count
+        final = nlargest(5, recs, key = recs.get)
         genres = []
         for b in books:
             genres.append( b.genre.split(",") )
 
-        return render_template('blog/view.html', book=book, user=user, genre=bgenre,books=books,genres=genres)
+        return render_template('blog/view.html', book=book, user=user, genre=bgenre,books=final,genres=genres)
     
     flash(error)
     books = Book.query.all()
