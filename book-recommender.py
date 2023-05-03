@@ -225,7 +225,7 @@ def get_reward_score(user, actionid, context):
             # print(selected_genre)
             # print(matching_genres)
             if len(matching_genres) ==1 :
-                reward_score = 0.6
+                reward_score = 0.7
             if len(matching_genres) ==2 :
                 reward_score = 0.85
             # elif len(matching_genres) == 2:
@@ -247,7 +247,7 @@ def get_reward_score(user, actionid, context):
 
 def run_personalizer_cycle(actions):
     
-    user_idx_list = get_random_users(5)
+    user_idx_list = get_random_users(3)
     for user_idx in user_idx_list:
         user = user_profiles[user_idx]
         # print("------------")
@@ -287,7 +287,7 @@ while continue_loop:
 # </snippet_2>
 
 # <snippet_multi>
-for i in range(0,5000):
+for i in range(0,1000):
     run_personalizer_cycle(actions)
     if i%400 == 0:
         print('--------------------------------------------------------------------------------------------------------')
