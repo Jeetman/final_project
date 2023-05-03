@@ -95,7 +95,7 @@ def index():
                     for u_genre in user_genres:
                         if genre == u_genre:
                             count = count + 1;
-                recs[book.isbn] = count
+                recs[book] = count
             final = nlargest(5, recs, key = recs.get)
             genres = []
             for b in final:
