@@ -7,6 +7,7 @@ from azure.cognitiveservices.personalizer.models import RankableAction, RewardRe
 from msrest.authentication import CognitiveServicesCredentials
 from view.auth import login_required
 from app import db
+from heapq import nlargest
 from models import User, Book
 from sqlalchemy import text, not_
 import heapq, csv
@@ -78,28 +79,28 @@ def get_actions():
 @bp.route('/')
 @login_required
 def index():
+    recs = {}
     if g.user is not None:
         user = User.query.where(User.id == g.user.id).first()
         if user is not None:
             print(str(user))
             user_genres = user.genre.split(",")
-            profile = [{'genre_preferences':set(user_genres)}]
-            actions = get_actions()
-            rank_request = RankRequest(actions=actions, context_features=profile)
-            response = client.rank(rank_request=rank_request)
-            ranked_actions = [(action.id, action.probability) for action in response.ranking]
-            top_actions = heapq.nlargest(5, ranked_actions, key=lambda x: x[1])
-            print(top_actions)
+            
             #get recomendations
-            books = []
-            for rec in top_actions:
-                isbn = rec[0]
-                data = Book.query.where(Book.isbn == isbn).first()
-                books.append(data)
+            books = Book.query.all()
+            for book in books:
+                book_genres = book.genre.split(",")
+                count = 0
+                for genre in book_genres:
+                    for u_genre in user_genres:
+                        if genre == u_genre:
+                            count = count + 1;
+                recs[book.isbn] = count
+            final = nlargest(5, recs, key = recs.get)
             genres = []
-            for b in books:
+            for b in final:
                 genres.append( b.genre.split(",") )
-            return render_template('blog/index.html', books=books, genres=genres)
+            return render_template('blog/index.html', books=final, genres=genres)
         return render_template('blog/index.html', books=[], genres=[])
     else:
         books = Book.query.all()
