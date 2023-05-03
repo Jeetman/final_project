@@ -1,7 +1,4 @@
-Coming-of-Age,Existentialism,Psychological
-Fiction,Adventure,Modernist
-Psychological,Coming-of-Age,Classic
-Coming-of-Age,Existentialism,Adventure
-Adventure,Romance,Modernist
-Classic,Horror,Fiction
-Modernist,Existentialism,Fiction
+Fiction,Adventure,Romance
+Coming-of-Age,Psychological,Existentialism
+Horror,Fiction,Adventure
+Modernist,Coming-of-Age,Psychological
