@@ -33,10 +33,10 @@ print(genre_list)
 unique_genre_set = set()
 genre_isbn_map = {}
 top_isbn = set()
-with open('isbn.csv', newline='') as csvfile:
-    reader = csv.reader(csvfile)
-    for row in reader:
-        top_isbn.add(row[0])
+#with open('isbn.csv', newline='') as csvfile:
+#    reader = csv.reader(csvfile)
+#    for row in reader:
+#        top_isbn.add(row[0])
 
 with open('data_trim.csv') as csv_file:
     # Read the data from the CSV file as a dictionary
