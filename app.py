@@ -90,5 +90,6 @@ def users():
         }
         user_list.append(user_dict)
     return jsonify(user_list)
+
 if __name__ == '__main__':
     app.run()

@@ -1,48 +1,12 @@
-Book Title,ISBN,Author,Year,Genre 1,Genre 2,Genre 3,Genre 4,Attribute 1,Attribute 2,Attribute 3
-To Kill a Mockingbird,9780061120084,Harper Lee,1960,Fiction,Coming-of-Age,Legal Drama,Southern Gothic,Pulitzer Prize Winner,Classic,American Literature
-1984,9780451524935,George Orwell,1949,Fiction,Dystopian,Political,Social Criticism,Classic,British Literature,Science Fiction
-The Great Gatsby,9780743273565,F. Scott Fitzgerald,1925,Fiction,Romance,Tragedy,Historical Fiction,Classic,American Literature,Roaring Twenties
-Pride and Prejudice,9780486284736,Jane Austen,1813,Fiction,Romance,Regency,Comedy of Manners,Classic,British Literature
-To the Lighthouse,9780156907392,Virginia Woolf,1927,Fiction,Modernist,Literary Fiction,Feminism,Classic,British Literature,Stream of Consciousness
-One Hundred Years of Solitude,9780060883287,Gabriel Garcia Marquez,1967,Fiction,Magical Realism,Surrealism,Family Saga,Latin American Literature,Nobel Prize Winner
-The Catcher in the Rye,9780316769488,J.D. Salinger,1951,Fiction,Coming-of-Age,Psychological,Existentialism,Classic,American Literature
-Beloved,9781400033416,Toni Morrison,1987,Fiction,Postmodernism,Historical Fiction,Social Commentary,Nobel Prize Winner,African American Literature
-The Sun Also Rises,9780743297332,Ernest Hemingway,1926,Fiction,Modernist,Expatriate Literature,Lost Generation,Classic,American Literature
-Crime and Punishment,9780140449136,Fyodor Dostoyevsky,1866,Fiction,Psychological,Thriller,Existentialism,Russian Literature
-Jane Eyre,9780141441146,Charlotte Bronte,1847,Fiction,Romance,Gothic,Victorian Literature,Feminism,Classic,British Literature
-Moby-Dick,9780142437247,Herman Melville,1851,Fiction,Adventure,Sea Story,Symbolism,Classic,American Literature
-The Picture of Dorian Gray,9780141442464,Oscar Wilde,1890,Fiction,Gothic,LGBTQ+,Philosophical,Classic,British Literature
-Anna Karenina,9780143035008,Leo Tolstoy,1877,Fiction,Romance,Realism,Tragedy,Russian Literature
-The Sound and the Fury,9780393964813,William Faulkner,1929,Fiction,Modernist,Southern Gothic,Stream of Consciousness,Classic,American Literature
-Wuthering Heights,9780141439556,Emily Bronte,1847,Fiction,Romance,Gothic,Victorian Literature,Classic,British Literature
-Invisible Man,9780679732761,Ralph Ellison,1952,Fiction,Existentialism,Social Commentary,African American Literature,National Book Award Winner
-The Grapes of Wrath,9780143039433,John Steinbeck,1939,Fiction,Realism,Social Commentary,Great Depression,Classic,American Literature,Pulitzer Prize Winner
-Mrs. Dalloway,9780156628709,Virginia Woolf,1925,Fiction,Modernist,Literary Fiction,Feminism,Classic,British Literature,Stream of Consciousness
-The Brothers Karamazov,9780374528379,Fyodor Dostoyevsky,1880,Fiction,Philosophical,Spiritual,Thriller,Russian Literature
-The Lord of the Rings,9780544003415,J.R.R. Tolkien,1954,Fiction,Fantasy,Adventure,Quest,Classic,British Literature
-The Odyssey,9780140268867,Homer,8th century BCE,Fiction,Classic Mythology,Adventure,Quest,Greek Literature
-Lolita,9780679723165,Vladimir Nabokov,1955,Fiction,Postmodernism,Psychological,LGBTQ+,Controversial,Russian Literature
-Heart of Darkness,9780486264646,Joseph Conrad,1899,Fiction,Modernist,Literary Fiction,Colonialism,British Literature
-Frankenstein,9780486282114,Mary Shelley,1818,Fiction,Horror,Science Fiction,Gothic,Romanticism,British Literature
-Slaughterhouse-Five,9780440180296,Kurt Vonnegut,1969,Fiction,Postmodernism,Science Fiction,War,Satire,American Literature
-Brave New World,9780060850524,Aldous Huxley,1932,Fiction,Dystopian,Science Fiction,Psychological,Social Criticism,British Literature
-The Canterbury Tales,9780140424386,Geoffrey Chaucer,14th century,Fiction,Classic Literature,Medieval Literature,Social Commentary,British Literature
-The Iliad,9780140275360,Homer,8th century BCE,Fiction,Classic Mythology,Adventure,War,Greek Literature
-Dubliners,9780140186475,James Joyce,1914,Fiction,Modernist,Short Stories,Irish Literature,Classic Literature
-The Trial,9780805209990,Franz Kafka,1925,Fiction,Existentialism,Philosophical,Surrealism,Classic Literature
-Middlemarch,9780141196893,George Eliot,1871,Fiction,Realism,Victorian Literature,Social Commentary,British Literature
-The Adventures of Huckleberry Finn,9780486280615,Mark Twain,1884,Fiction,Adventure,Coming-of-Age,Classic,American Literature
-The Stranger,9780679720201,Albert Camus,1942,Fiction,Existentialism,Philosophical,Psychological,French Literature
-The Handmaid's Tale,9780385490818,Margaret Atwood,1985,Fiction,Dystopian,Feminism,Science Fiction,Social Criticism,Canadian Literature
-The Divine Comedy,9780141197494,Dante Alighieri,1320,Fiction,Classic Literature,Epic Poetry,Christian Literature,Italian Literature
-Their Eyes Were Watching God,9780061120060,Zora Neale Hurston,1937,Fiction,Southern Gothic,African American Literature,Women's Literature
-The Color Purple,9780156028356,Alice Walker,1982,Fiction,African American Literature,Feminism,Epistolary,Social Commentary,Pulitzer Prize Winner
-The Scarlet Letter,9780142437261,Nathaniel Hawthorne,1850,Fiction,Romance,Gothic,Morality,Classic Literature
-The Count of Monte Cristo,9780140449266,Alexandre Dumas,1844,Fiction,Adventure,Historical,French Literature,Revenge
-The Hitchhiker's Guide to the Galaxy,9780345391803,Douglas Adams,1979,Fiction,Science Fiction,Comedy,Satire,British Literature
-The Hobbit,9780547928227,J.R.R. Tolkien,1937,Fiction,Fantasy,Adventure,Classic,British Literature
-The Kite Runner,9781594631931,Khaled Hosseini,2003,Fiction,Historical,Coming-of-Age,Drama,Afghan Literature
-The Diary of a Young Girl,9780553577129,Anne Frank,1947,Non-Fiction,World War II,Holocaust,Diary,Classic Literature
-A Tale of Two Cities,9780141439600,Charles Dickens,1859,Fiction,Historical,Classic Literature,French Revolution,Social Criticism
-Animal Farm,9780452284241,George Orwell,1945,Fiction,Satire,Dystopian,Political Allegory,British Literature
-To Kill a Mockingbird,9780446310789,Harper Lee,1960,Fiction,Southern Gothic,Racial Injustice,Coming-of-Age,American Literature
+Book Title,ISBN,Author,Year,Genre 1,Genre 2,Genre 3,Genre 4
+The Catcher in the Rye,9780316769488,J.D. Salinger,1951,Fiction,Adventure,Romance,Modernist
+Crime and Punishment,9780140449136,Fyodor Dostoyevsky,1866,Coming-of-Age,Psychological,Existentialism,Classic
+Invisible Man,9780679732761,Ralph Ellison,1952,Horror,Fiction,Adventure,Romance
+The Adventures of Huckleberry Finn,9780486280615,Mark Twain,1884,Modernist,Coming-of-Age,Psychological,Existentialism
+The Stranger,9780679720201,Albert Camus,1942,Classic,Horror,Fiction,Adventure
+To Kill a Mockingbird,9780061120084,Harper Lee,1960,Romance,Modernist,Coming-of-Age,Psychological
+Pride and Prejudice,9780486284736,Jane Austen,1813,Existentialism,Classic,Horror,Fiction
+To the Lighthouse,9780156907392,Virginia Woolf,1927,Adventure,Romance,Modernist,Coming-of-Age
+Beloved,9781400033416,Toni Morrison,1987,Psychological,Existentialism,Classic,Horror
+The Sun Also Rises,9780743297332,Ernest Hemingway,1926,Fiction,Adventure,Romance,Modernist
+The Lord of the Rings,9780544003415,J.R.R. Tolkien,1954,Coming-of-Age,Psychological,Existentialism,Classic
